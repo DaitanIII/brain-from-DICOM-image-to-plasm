@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Brain-from-dicom-image-to-plasm by DaitanII</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/DaitanII/brain-from-DICOM-image-to-plasm">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/DaitanII/brain-from-DICOM-image-to-plasm/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/DaitanII/brain-from-DICOM-image-to-plasm/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Brain-from-dicom-image-to-plasm</h1>
+          <p>final-project cvd-lab</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/DaitanII">DaitanII</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h3>Introduction</h3>
+
+<p>The brain is the principal organ of the nervous system, has the function to process stimuli from the environment and stimuli coming from the entire body and is responsible for the coordination of muscles and other organs, is the place where the take place processes which give rise to thought.
+It 's contained in the cranial cavity and is formed by two hemispheres divided into lobes, each lobe counts in specific functions. 
+Its morphological structure is complex, and is characterized by an external surface of the cerebral hemispheres composed of many grooves and reliefs that make it remarkably uneven and that amplify its extension, are also present fissures that identify the lobes.
+<img src="https://github.com/DaitanII/brain-from-DICOM-image-to-plasm/tree/master/final-project" alt="lobes"></p>
+
+<h3>Obtain json object from DICOM image</h3>
+
+<p>Starting point for the construction of the brain in plasm is obtaining the necessary information to the construction of the curves to be used in nubs function of plasm.
+The principal source is taken from <a href="https://github.com/cvdlab-bio/web3d/tree/master/how%20to/How-To-Brain_Example">here</a> where is descrived how to obtain a json object from DICOM image.
+The <a href="http://web3d.dia.uniroma3.it/?dicom=example3.dcm&amp;frames=250">utility DICOM image to json</a> is used to construct the json object.
+To construct the json object were used drawing tools and rescue present in <a href="http://web3d.dia.uniroma3.it/?dicom=example3.dcm&amp;frames=250">utility DICOM image to json</a>,
+in particular, the tool freePol has been used  for tracing of the contours of the images concerned
+The resulting object is taken from <a href="https://github.com/cvdlab-bio/web3d/tree/master/how%20to/How-To-Brain_Example/Json%20Code">here</a> and saved <a href="https://github.com/cvdlab-cg/228091/blob/master/final-project/oggettiJson/DICOM/json_brain.json">locally in the file</a> where will be parsen localy to improve speed (the json object has dimension of 4,7 Mb).</p>
+
+<h3>from json to point</h3>
+
+<p>The json object obtained, must be further processed to extract useful information for plasm.
+To do this, I have used the jquery library, and more specifically the function getJSON() with which I have extracted curves of interest.
+the resulting object is an array composed of a set of arrays, each of which contains the coordinates of the points of the curves drawing with the freePol tool.</p>
+
+<h3>Adaptation to the Plasm environment</h3>
+
+<p>To center and to adapt the size of the object to the environment of plasm, the coordinates obtained were scaled by a factor of 100, and because of the tool freepol, that creates continuous curves, the number of points to be produced for the plasm'NUBS function is too high
+and to increase the performace and reduce the amount of calculations made have been eliminated curves with a number of points less than 30 and a point is selected every 10</p>
+
+<h3>Wiew Brain in Plasm</h3>
+
+<p>To view the resulting work go <a href="https://github.com/DaitanII/brain-from-DICOM-image-to-plasm/final-project/final-project.html">here</a> if you have dowloding the project localy, and use google chrome, start it with this option --allow-file-access-from-files.
+To load the object occur some seconds</p>
+
+<h3>Authors and Contributors</h3>
+
+<p>Tanks to LoryRm (<a href="https://github.com/LoryRm" class="user-mention">@LoryRm</a>) for his work in <a href="https://github.com/cvdlab-bio/web3d">cvdlab-bio/web3d</a></p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+    
+  </body>
+</html>
